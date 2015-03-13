@@ -4,16 +4,16 @@
 
         function countRepeats($input_search, $input_string) {
 
+          $count = 0;
+          $search = strtolower($input_search);//lower case input search
+          $string = strtolower($input_string);//lower case input string
+          $string_array = explode(' ', $string);//seperate into individual words
+          $words = array_count_values($string_array);
 
-          $search = strtolower($input_search);
-          $string = strtolower($input_string);
-          $final_count = 0;
-
-
-                    if ($search == $string) {
-                        $final_count++;
-                    }
-            return $final_count;
+          foreach($string_array as $word) {
+            $count += substr_count($search, $word);
+          }
+            return $count;
         }
     }
 ?>
